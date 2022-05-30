@@ -4,11 +4,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace HomeWorks
+namespace HomeWorks.HomeWork3
 {
-    internal class PointClassDouble
+    internal struct PointStructDouble
     {
         public double X { get; set; }
-        public double Y { get; set; }        
+        public double Y { get; set; }
     }
 }

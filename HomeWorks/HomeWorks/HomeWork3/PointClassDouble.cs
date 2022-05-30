@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace HomeWorks
+namespace HomeWorks.HomeWork3
 {
-    internal struct PointStructDouble
+    internal class PointClassDouble
     {
         public double X { get; set; }
         public double Y { get; set; }

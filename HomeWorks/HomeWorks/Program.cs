@@ -25,7 +25,11 @@ namespace HomeWorks
 
             foreach (MethodInfo method in methods)
             {
-                Console.WriteLine($"Введите {Array.IndexOf(methods, method) + 1}, чтобы запустить задание {method.Name}");
+                List<CustomAttributeNamedArgument> methodAttributes = method.CustomAttributes.First().NamedArguments.ToList();
+                string methodName = methodAttributes[0].TypedValue.ToString().Replace("\"", "");
+                string methodDescription = methodAttributes[1].TypedValue.ToString().Replace("\"", "");
+
+                Console.WriteLine($"Введите {Array.IndexOf(methods, method) + 1}, чтобы запустить {methodName}. {methodDescription}");
             }
         }
 
@@ -34,9 +38,7 @@ namespace HomeWorks
         /// </summary>
         /// <param name="methods"></param>
         private static void RunSelectedHomework(MethodInfo[] methods)
-        {            
-
-
+        {
             while (true)
             {
                 PrintMethodsInfo(methods);

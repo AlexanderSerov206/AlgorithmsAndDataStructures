@@ -4,12 +4,12 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace HomeWorks
+namespace HomeWorks.HomeWork2
 {
     /// <summary>
     /// Узел двусвязного списка. Содержит информацию о значении и ссылки на предыдущий и последующий элементы, если они есть.
     /// </summary>
-    public class Node : IDisposable 
+    public class Node : IDisposable
     {
         public int Value { get; set; }
         public Node NextNode { get; set; }
@@ -47,7 +47,7 @@ namespace HomeWorks
         {
             Value = value;
         }
-        
+
         /// <summary>
         /// Высвобождение ссылок на другие элементы списка при удалении.
         /// </summary>
