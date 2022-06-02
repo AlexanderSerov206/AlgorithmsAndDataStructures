@@ -1,4 +1,4 @@
-﻿namespace HomeWorks.HomeWork2
+﻿namespace HomeworksLibrary.HomeWork2
 {
     public interface ILinkedList
     {

@@ -1,18 +1,31 @@
-﻿using System;
+﻿using IHomeworkLibrary;
+using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Reflection;
 using System.Text;
 
-namespace HomeWorks
+namespace HomeworksLibrary
 {
     internal class Program
     {
         static void Main(string[] args)
         {
-            MethodInfo[] methods = typeof(HomeWorks).GetMethods().Where(x => x.Module.Name.Equals("HomeWorks.dll")).ToArray(); // Выбирает все методы, которые объявлены в классе HomeWorks
+            RunSelectedHomework(GetMethods());
+        }
 
-            RunSelectedHomework(methods);
+        /// <summary>
+        /// Возвращает список методов, которые содержатся в библиотеке HomeworksLibrary.dll и реализуют интерфейс IHomework
+        /// </summary>
+        /// <returns></returns>
+        private static MethodInfo[] GetMethods()
+        {
+            Assembly assembly = Assembly.LoadFrom("HomeworksLibrary.dll");
+            List<Type> types = assembly.GetTypes().Where(x => x.IsAssignableTo(typeof(IHomework))).ToList();
+
+            MethodInfo[] methods = types.SelectMany(x => x.GetMethods().Where(y => y.Module.ToString() == "HomeworksLibrary.dll")).OrderBy(x => x.Name).ToArray();
+            return methods;
         }
 
         /// <summary>

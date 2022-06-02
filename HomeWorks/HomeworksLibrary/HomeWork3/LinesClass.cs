@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace HomeWorks.HomeWork3
+namespace HomeworksLibrary.HomeWork3
 {
     internal class LinesClass
     {

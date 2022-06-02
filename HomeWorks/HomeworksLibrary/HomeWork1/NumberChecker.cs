@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace HomeWorks.HomeWork1
+namespace HomeworksLibrary.HomeWork1
 {
     static class NumberChecker
     {
