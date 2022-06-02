@@ -5,16 +5,16 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace HomeWorks
+namespace HomeWorks.HomeWork3
 {
-    internal class LinesClass
+    internal class LinesStuct
     {
-        List<LineClass> Lines { get; set; }
+        List<LineStruct> Lines { get; set; }
         Random Random { get; set; }
 
-        public LinesClass(Random random)
+        public LinesStuct(Random random)
         {
-            Lines = new List<LineClass>();
+            Lines = new List<LineStruct>();
             Random = random;
         }
 
@@ -31,7 +31,7 @@ namespace HomeWorks
 
             for (int i = 0; i < count; i++)
             {
-                Lines.Add(new LineClass(Random));
+                Lines.Add(new LineStruct(Random));
             }
 
             stopwatch.Stop();
@@ -49,7 +49,7 @@ namespace HomeWorks
 
             stopwatch.Start();
 
-            foreach (LineClass line in Lines)
+            foreach (LineStruct line in Lines)
             {
                 line.CalculateLength();
             }

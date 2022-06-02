@@ -1,6 +1,12 @@
-﻿using System;
+﻿using HomeWorks.HomeWork1;
+using HomeWorks.HomeWork2;
+using HomeWorks.HomeWork3;
+using HomeWorks.HomeWork4;
+using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Diagnostics;
+using System.Linq;
 
 namespace HomeWorks
 {
@@ -9,6 +15,7 @@ namespace HomeWorks
     /// </summary>
     static class HomeWorks
     {
+        [Display(Name = "Задание 1.1", Description = "Проверка простых чисел.")]
         public static void HomeWork_1_1()
         {
             bool expectedTrue = NumberChecker.IsNumberSimple_11_True();
@@ -38,6 +45,8 @@ namespace HomeWorks
                 Console.WriteLine("Введено некорректное значение.");
             }
         }
+
+        [Display(Name = "Задание 1.3", Description = "Расчёт числа Фибоначчи.")]
         public static void HomeWork_1_3()
         {
             Console.WriteLine();
@@ -53,6 +62,8 @@ namespace HomeWorks
                 Console.WriteLine("Введено некорректное значение.");
             }
         }
+
+        [Display(Name = "Задание 2", Description = "Двусвязный список.")]
         public static void HomeWork_2_1()
         {
             LinkedList linkedList = new LinkedList(new int[] { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20 });
@@ -99,6 +110,8 @@ namespace HomeWorks
 
             Console.WriteLine();
         }
+
+        [Display(Name = "Задание 3", Description = "Сравнение скорости работы класса и структуры.")]
         public static void HomeWork_3_1()
         {
             Random random = new Random();
@@ -160,6 +173,38 @@ namespace HomeWorks
             Console.WriteLine("{0, -16} ║ {1, -23} ║ {2, -27} ║ {3, -9}", "Количество точек", "Время заполнения(класс)", "Время заполнения(структура)", "Отношение");
             Console.WriteLine("{0, -16} ║ {1, -23} ║ {2, -27} ║ {3, -9:P2}", 100000, $"{avgCalc100000Class}мс", $"{avgCalc100000Struct}мс", avgCalc100000Class / avgCalc100000Struct);
             Console.WriteLine("{0, -16} ║ {1, -23} ║ {2, -27} ║ {3, -9:P2}", 200000, $"{avgCalc200000Class}мс", $"{avgCalc200000Struct}мс", avgCalc200000Class / avgCalc200000Struct);
+        }
+
+        [Display(Name = "Задание 4.1", Description = "Бинарное дерево.")]
+        public static void HomeWork_4_1()
+        {
+            Random random = new Random();
+            BinaryTree<string> binaryTree = new BinaryTree<string>(random.Next(10, 100).ToString());
+
+            BinaryTreeHandler<string>.AddRandomNumbers(random, binaryTree, 15);
+            BinaryTreeHandler<string>.PrintTree(binaryTree);
+            BinaryTreeHandler<string>.SearchForRandomNumbers(random, binaryTree, 5);
+        }
+
+        [Display(Name = "Задание 4.2", Description = "Hash-таблицы и массивы.")]
+        public static void HomeWork_4_2()
+        {
+            Random random = new Random();
+            int count = 200000;
+            string[] stringArray = new string[count];
+            HashSet<string> stringHashSet = new HashSet<string>(count);
+
+            TimeSpan arrayFillElapsed = ArrayPerformanceCalculator.ArrayFillPerformance(random, count, stringArray);
+            TimeSpan hashSetFillElapsed = HashSetPerformanceCalculator.HashSetFillPerformance(random, count, stringHashSet);
+
+            Console.WriteLine($"Массив {count} строк заполнен за {arrayFillElapsed}");
+            Console.WriteLine($"HashSet {count} строк заполнен за {hashSetFillElapsed}");
+
+            TimeSpan arraySearchElapsed = ArrayPerformanceCalculator.SearchRandomWordArray(random, stringArray);
+            TimeSpan hashSetSearchElapsed = HashSetPerformanceCalculator.SearchRandomWordHashSet(random, stringHashSet);
+
+            Console.WriteLine($"Проверка наличия случайного слова в массиве выполнена за {arraySearchElapsed}");
+            Console.WriteLine($"Проверка наличия случайного слова в HashSet выполнена за {hashSetSearchElapsed}");
         }
     }
 }

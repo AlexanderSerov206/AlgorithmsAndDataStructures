@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace HomeWorks
+namespace HomeWorks.HomeWork3
 {
     internal class LineClass
     {
@@ -41,7 +41,7 @@ namespace HomeWorks
             double x = PointOne.X - PointTwo.X;
             double y = PointOne.Y - PointTwo.Y;
 
-            return Math.Sqrt((x * x) + (y * y));
+            return Math.Sqrt(x * x + y * y);
         }
     }
 }

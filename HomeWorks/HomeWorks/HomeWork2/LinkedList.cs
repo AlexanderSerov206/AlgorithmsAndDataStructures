@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace HomeWorks
+namespace HomeWorks.HomeWork2
 {
     internal class LinkedList : ILinkedList
     {
@@ -50,7 +50,7 @@ namespace HomeWorks
                 LastNode = newLastNode;
             }
         }
-        
+
         /// <summary>
         /// Добавить новое значение после указанного узла.
         /// </summary>
@@ -73,7 +73,7 @@ namespace HomeWorks
                 node.NextNode = newNode;
             }
         }
-        
+
         /// <summary>
         /// Поиск узла в списке по значению. Поиск происходит от первого элемента к последнему.
         /// </summary>
@@ -124,7 +124,7 @@ namespace HomeWorks
                 return node;
             }
         }
-        
+
         /// <summary>
         /// Осуществляет бинарный поиск индекса указанного узла.
         /// </summary>

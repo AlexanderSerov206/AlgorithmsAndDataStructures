@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace HomeWorks
+namespace HomeWorks.HomeWork1
 {
     static class FibonacciCalculator
     {
