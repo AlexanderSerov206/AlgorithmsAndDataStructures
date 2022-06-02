@@ -206,5 +206,21 @@ namespace HomeWorks
             Console.WriteLine($"Проверка наличия случайного слова в массиве выполнена за {arraySearchElapsed}");
             Console.WriteLine($"Проверка наличия случайного слова в HashSet выполнена за {hashSetSearchElapsed}");
         }
+
+        [Display(Name = "Задание 5", Description = "Бинарные деревья. Поиск в ширину и в глубину.")]
+        public static void HomeWork_5_1()
+        {
+            Random random = new Random();
+            BinaryTree<string> binaryTree = new BinaryTree<string>(random.Next(10, 100).ToString());
+            BinaryTreeHandler<string>.AddRandomNumbersSilent(random, binaryTree, 50);
+
+            string valueToSearch = random.Next(10, 100).ToString();
+
+            BinaryTreeHandler<string>.DepthFirstSearch(valueToSearch, binaryTree);
+
+            Console.WriteLine();
+
+            BinaryTreeHandler<string>.BreadthFirstSearch(valueToSearch, binaryTree);
+        }
     }
 }

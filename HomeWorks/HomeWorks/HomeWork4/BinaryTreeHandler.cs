@@ -54,7 +54,7 @@ namespace HomeWorks.HomeWork4
 
             branches.Add(new List<BinaryTree<T>>() { rootTree });
 
-            for (int i = 0; i < height -1; i++)
+            for (int i = 0; i < height - 1; i++)
             {
                 branches.Add(new List<BinaryTree<T>>());
 
@@ -65,7 +65,7 @@ namespace HomeWorks.HomeWork4
                     else
                         branches[i + 1].Add(new BinaryTree<T>(default(T)));
 
-                    if (branch.BranchRight != null)                    
+                    if (branch.BranchRight != null)
                         branches[i + 1].Add(branch.BranchRight);
                     else
                         branches[i + 1].Add(new BinaryTree<T>(default(T)));
@@ -97,7 +97,7 @@ namespace HomeWorks.HomeWork4
                 }
             }
         }
-        
+
         /// <summary>
         /// Добавляет случайные числа в дерево
         /// </summary>
@@ -117,6 +117,123 @@ namespace HomeWorks.HomeWork4
                 {
                     Console.WriteLine($"Элемент {value} не был добавлен, т.к. есть дубль. Количетсво элементов = {binaryTree.Count}");
                 }
+            }
+        }
+
+        /// <summary>
+        /// Добавляет случайные числа в дерево. Без вывода команд в консоль.
+        /// </summary>
+        /// <param name="random"></param>
+        /// <param name="binaryTree"></param>
+        /// <param name="count"></param>
+        public static void AddRandomNumbersSilent(Random random, BinaryTree<string> binaryTree, int count)
+        {
+            for (int i = 0; i < count; i++)
+            {
+                int value = random.Next(10, 100);
+                binaryTree.Add(value.ToString());
+            }
+        }
+
+        /// <summary>
+        /// Поиск в ширину. Сопровождает работу выводом в консоль. 
+        /// </summary>
+        /// <param name="value">Искомое значение.</param>
+        /// <param name="tree">Дерево, в котором осуществляется поиск.</param>
+        /// <returns>Ветвь, в которой найдено значение.</returns>
+        public static BinaryTree<T> BreadthFirstSearch(T value, BinaryTree<T> tree)
+        {
+            Console.WriteLine($"Ищем значение {value}. Осуществляем поиск в ширину.");
+            int height = tree.Root.GetHeight();
+            Console.WriteLine($"Высота дерева равна {height}");
+
+            List<List<BinaryTree<T>>> branches = new List<List<BinaryTree<T>>>();
+
+            branches.Add(new List<BinaryTree<T>>() { tree.Root });
+
+            for (int i = 0; i < height - 1; i++)
+            {
+                branches.Add(new List<BinaryTree<T>>());
+
+                foreach (BinaryTree<T> branch in branches[i])
+                {
+                    if (branch.BranchLeft != null)
+                        branches[i + 1].Add(branch.BranchLeft);
+
+                    if (branch.BranchRight != null)
+                        branches[i + 1].Add(branch.BranchRight);
+                }
+
+                StringBuilder row = new StringBuilder();
+
+                foreach (BinaryTree<T> branch in branches[i])
+                {
+                    row.Append(branch.Value);
+                    row.Append(", ");
+                }
+                row.Remove(row.Length - 2, 2);
+
+                Console.WriteLine($"Проходим по уровню {i + 1}. В нём содержатся значения: {row}");
+
+                foreach (BinaryTree<T> branch in branches[i])
+                {
+                    if (value.CompareTo(branch.Value) == 0)
+                    {
+                        Console.WriteLine($"Значение найдено в уровне {i + 1}.");
+                        return branch;
+                    }
+                }
+                Console.WriteLine("Значение не найдено.");
+            }
+
+            return null;
+        }
+
+        /// <summary>
+        /// Поиск в глубину. Сопровождает работу выводом в консоль.
+        /// </summary>
+        /// <param name="value">Искомое значение.</param>
+        /// <param name="tree">Дерево, в котором осуществляется поиск.</param>
+        /// <returns>Ветвь, в которой найдено значение.</returns>
+        public static BinaryTree<T> DepthFirstSearch(T value, BinaryTree<T> tree)
+        {
+            if (tree == null)
+            {
+                Console.WriteLine("Искомый элемент не найден. Возвращаемся.");
+                return null;
+            }
+            else if (value.CompareTo(tree.Value) == 0)
+            {
+                Console.WriteLine($"Значение элемента равно {tree.Value}. Совпадает с искомым. Возвращаем.");
+                return tree;
+            }
+            else
+            {
+                if (tree.BranchLeft != null)
+                {
+                    Console.WriteLine($"Ищем {value} в левом элементе уровня {tree.Depth + 1}. Он равен {tree.BranchLeft.Value}.");
+                }
+                else
+                {
+                    Console.WriteLine($"Ищем {value} в левом элементе уровня {tree.Depth + 1}. Он пуст");
+                }
+
+                BinaryTree<T> result = DepthFirstSearch(value, tree.BranchLeft);
+
+                if (result == null)
+                {
+                    if (tree.BranchRight != null)
+                    {
+                        Console.WriteLine($"Ищем {value} в правом элементе уровня {tree.Depth + 1}. Он равен {tree.BranchRight.Value}.");
+                    }
+                    else
+                    {
+                        Console.WriteLine($"Ищем {value} в правом элементе уровня {tree.Depth + 1}. Он пуст");
+                    }
+                    result = DepthFirstSearch(value, tree.BranchRight);
+                }
+
+                return result;
             }
         }
     }
