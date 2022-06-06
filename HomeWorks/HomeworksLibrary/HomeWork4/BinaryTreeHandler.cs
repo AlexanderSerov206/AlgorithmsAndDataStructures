@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace HomeWorks.HomeWork4
+namespace HomeworksLibrary.HomeWork4
 {
     public static class BinaryTreeHandler<T> where T : IComparable
     {

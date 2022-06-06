@@ -6,10 +6,10 @@ using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace HomeWorks.HomeWork4
+namespace HomeworksLibrary.HomeWork4
 {
     public class BinaryTree<T> where T : IComparable
-    {    
+    {
         private BinaryTree<T> branchRight;
         private BinaryTree<T> branchLeft;
         private T _value;
@@ -193,7 +193,7 @@ namespace HomeWorks.HomeWork4
             else if (value.CompareTo(startingBranch.Value) == 0)
             {
                 return startingBranch;
-            }            
+            }
             else
             {
                 BinaryTree<T> result = Search(value, startingBranch.BranchLeft);

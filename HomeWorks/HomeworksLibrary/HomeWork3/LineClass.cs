@@ -4,19 +4,19 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace HomeWorks.HomeWork3
+namespace HomeworksLibrary.HomeWork3
 {
-    internal class LineStruct
+    internal class LineClass
     {
-        public PointStructDouble PointOne { get; private set; }
-        public PointStructDouble PointTwo { get; private set; }
+        public PointClassDouble PointOne { get; private set; }
+        public PointClassDouble PointTwo { get; private set; }
 
         /// <summary>
         /// Конструктор, позволяющий генерировать отрезок из ранее созданных точек.
         /// </summary>
         /// <param name="pointOne"></param>
         /// <param name="pointTwo"></param>
-        public LineStruct(PointStructDouble pointOne, PointStructDouble pointTwo)
+        public LineClass(PointClassDouble pointOne, PointClassDouble pointTwo)
         {
             PointOne = pointOne;
             PointTwo = pointTwo;
@@ -26,10 +26,10 @@ namespace HomeWorks.HomeWork3
         /// Конструктор, генерирующий отрезок со случайными координатами точек.
         /// </summary>
         /// <param name="random"></param>
-        public LineStruct(Random random)
+        public LineClass(Random random)
         {
-            PointOne = new PointStructDouble() { X = random.NextDouble(), Y = random.NextDouble() };
-            PointTwo = new PointStructDouble() { X = random.NextDouble(), Y = random.NextDouble() };
+            PointOne = new PointClassDouble() { X = random.NextDouble(), Y = random.NextDouble() };
+            PointTwo = new PointClassDouble() { X = random.NextDouble(), Y = random.NextDouble() };
         }
 
         /// <summary>

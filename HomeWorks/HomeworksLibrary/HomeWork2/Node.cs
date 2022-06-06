@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace HomeWorks.HomeWork2
+namespace HomeworksLibrary.HomeWork2
 {
     /// <summary>
     /// Узел двусвязного списка. Содержит информацию о значении и ссылки на предыдущий и последующий элементы, если они есть.
